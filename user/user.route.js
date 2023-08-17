@@ -72,8 +72,8 @@ router.get("/user/login", async (req, res) => {
   }
   // password match check
   const passwordMatch = await bcrypt.compare(
-    loginCredentials.password,
-    user.password
+    loginCredentials.password, //plain_password
+    user.password //hashed password
   );
 
   //   if not password match, throw error
