@@ -2,10 +2,12 @@ import express from "express";
 import Joi from "joi";
 import bcrypt from "bcrypt";
 import { User } from "./user.model.js";
+import jwt from "jsonwebtoken";
 
 const router = express.Router();
 
 // register user
+// main thing to consider => save password as hash
 router.post("/user/register", async (req, res) => {
   //   extract user data from req.body
   let newUser = req.body;
@@ -82,10 +84,15 @@ router.get("/user/login", async (req, res) => {
   }
 
   //   generate a token
+  const token = jwt.sign(
+    { email: user.email },
+    "kdafdjkasfdkadjfajfjkdfkakdjkafkjdkafdkj32413"
+  );
+
   //   hide password
   user.password = undefined;
   // send appropriate response
-  return res.status(200).send(user);
+  return res.status(200).send({ user, token });
 });
 
 export default router;
