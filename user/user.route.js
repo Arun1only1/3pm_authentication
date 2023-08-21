@@ -49,7 +49,8 @@ router.post("/user/register", async (req, res) => {
 });
 
 // login user
-router.get("/user/login", async (req, res) => {
+// if your req has body, then it cannot be get request
+router.post("/user/login", async (req, res) => {
   //   extract login credentials from req.body
   const loginCredentials = req.body;
 
