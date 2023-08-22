@@ -14,7 +14,7 @@ dbConnect();
 app.use(userRoutes);
 app.use(productRoutes);
 
-const port = 4000;
+const port = process.env.PORT;
 
 app.listen(port, () => {
   console.log(`App is listening on port ${port}`);

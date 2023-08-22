@@ -87,7 +87,7 @@ router.post("/user/login", async (req, res) => {
   //   generate a token
   const token = jwt.sign(
     { email: user.email },
-    "kdafdjkasfdkadjfajfjkdfkakdjkafkjdkafdkj32413"
+    process.env.JWT_ACCESS_TOKEN_SECRET_KEY
   );
 
   //   hide password

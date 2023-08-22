@@ -22,7 +22,7 @@ export const isUser = async (req, res, next) => {
   try {
     const decryptedValue = jwt.verify(
       token,
-      "kdafdjkasfdkadjfajfjkdfkakdjkafkjdkafdkj32413"
+      process.env.JWT_ACCESS_TOKEN_SECRET_KEY
     );
 
     userEmail = decryptedValue.email;
